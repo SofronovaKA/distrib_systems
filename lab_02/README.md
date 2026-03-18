@@ -434,11 +434,11 @@ curl http://localhost/api/schedule | jq
 
 ## Архитектура инструментов REST API:
 
-<img width="750" alt="image" src="https://github.com/user-attachments/assets/238525da-f2c0-4587-bb45-e2ed854a74f7" />
+<img width="1200" alt="image" src="https://github.com/user-attachments/assets/238525da-f2c0-4587-bb45-e2ed854a74f7" />
 
 ## Архитектура инструментов REST API с Nginx:
 
-<img width="750" alt="image" src="https://github.com/user-attachments/assets/278170c3-2155-408b-b38e-972ead176320" />
+<img width="1200" alt="image" src="https://github.com/user-attachments/assets/278170c3-2155-408b-b38e-972ead176320" />
 
 ## Выводы:
 
