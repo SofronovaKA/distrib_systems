@@ -37,9 +37,9 @@ sudo apt update
 sudo apt install curl -y
 sudo apt install jq -y
 ```
-<img width="400" alt="image" src="https://github.com/user-attachments/assets/a6990fc1-e4db-4f3f-aff0-4803dd3371c2" />
-<img width="400" alt="image" src="https://github.com/user-attachments/assets/7e279de6-8d5f-4f91-866d-e8955830153a" />
-<img width="400" alt="image" src="https://github.com/user-attachments/assets/4aa80d0a-5e5f-4a35-8a7b-9c0bd09d8126" />
+<img width="700" alt="image" src="https://github.com/user-attachments/assets/a6990fc1-e4db-4f3f-aff0-4803dd3371c2" />
+<img width="700" alt="image" src="https://github.com/user-attachments/assets/7e279de6-8d5f-4f91-866d-e8955830153a" />
+<img width="700" alt="image" src="https://github.com/user-attachments/assets/4aa80d0a-5e5f-4a35-8a7b-9c0bd09d8126" />
 
 #### Проверка установки curl:
 
@@ -47,7 +47,7 @@ sudo apt install jq -y
 curl --version
 ```
 
-<img width="400" alt="image" src="https://github.com/user-attachments/assets/635ab60a-abcd-43dc-88a7-874d7a7df347" />
+<img width="700" alt="image" src="https://github.com/user-attachments/assets/635ab60a-abcd-43dc-88a7-874d7a7df347" />
 
 #### 1.2. Анализ структуры ответа
 Простой запрос (нечитабельный ответ в виде одной непрерывной строки формата JSON):
@@ -56,7 +56,7 @@ curl --version
 curl https://randomuser.me/api/
 ```
 
-<img width="400" alt="image" src="https://github.com/user-attachments/assets/2467b4fe-4801-40d4-a724-086c81f57487" />
+<img width="700" alt="image" src="https://github.com/user-attachments/assets/2467b4fe-4801-40d4-a724-086c81f57487" />
 
 Форматированный вывод с помощью jq:
 
@@ -64,8 +64,8 @@ curl https://randomuser.me/api/
 curl -s https://randomuser.me/api/ | jq
 ```
 
-<img width="400" alt="image" src="https://github.com/user-attachments/assets/532f4db2-f466-4a58-b0f4-d6d233b42926" />
-<img width="400" alt="image" src="https://github.com/user-attachments/assets/c990d7a4-026c-4431-99bd-7ae5f3b52fc9" />
+<img width="700" alt="image" src="https://github.com/user-attachments/assets/532f4db2-f466-4a58-b0f4-d6d233b42926" />
+<img width="700" alt="image" src="https://github.com/user-attachments/assets/c990d7a4-026c-4431-99bd-7ae5f3b52fc9" />
 
 Флаг -s (silent) убирает статистику загрузки.
 
@@ -80,7 +80,7 @@ curl -s https://randomuser.me/api/ | jq
 curl -i https://randomuser.me/api/
 ```
 
-<img width="400" alt="image" src="https://github.com/user-attachments/assets/99af4d8b-fc84-4349-b2f3-2abded77c12c" />
+<img width="700" alt="image" src="https://github.com/user-attachments/assets/99af4d8b-fc84-4349-b2f3-2abded77c12c" />
 
 **Ключевые заголовки:**
 * `HTTP/2 200` — код ответа
@@ -94,7 +94,7 @@ curl -i https://randomuser.me/api/
 curl -I https://randomuser.me/api/
 ```
 
-<img width="400" alt="image" src="https://github.com/user-attachments/assets/2944ea5a-63c9-46e8-852e-d12c637249d9" />
+<img width="700" alt="image" src="https://github.com/user-attachments/assets/2944ea5a-63c9-46e8-852e-d12c637249d9" />
 
 Далее - извлечение конкретных полей. Получим ФИ пользователя, его email и фото:
 
@@ -104,7 +104,7 @@ curl -s https://randomuser.me/api/ | jq '.results[0].email'
 curl -s https://randomuser.me/api/ | jq '.results[0].picture.large'
 ```
 
-<img width="400" alt="image" src="https://github.com/user-attachments/assets/f50b895f-6ce5-454a-aa01-2e6f4f846e0c" />
+<img width="700" alt="image" src="https://github.com/user-attachments/assets/f50b895f-6ce5-454a-aa01-2e6f4f846e0c" />
 
 ### Задание 2. Разработка REST API "Расписание занятий"
 
@@ -151,7 +151,7 @@ source venv/bin/activate
 pip install Flask
 ```
 
-<img width="1205" height="620" alt="image" src="https://github.com/user-attachments/assets/d82803e1-1299-4a28-ae8b-50cd9fb9f5b7" />
+<img width="700" alt="image" src="https://github.com/user-attachments/assets/d82803e1-1299-4a28-ae8b-50cd9fb9f5b7" />
 
 #### 2.3. Реализация API (файл app.py)
 
@@ -237,7 +237,7 @@ if __name__ == '__main__':
 python3 app.py
 ```
 
-<img width="1167" height="278" alt="image" src="https://github.com/user-attachments/assets/4e8dd612-1be0-4a8f-83f9-85634b78ee4f" />
+<img width="700" alt="image" src="https://github.com/user-attachments/assets/4e8dd612-1be0-4a8f-83f9-85634b78ee4f" />
 
 ##### Добавление первого занятия (POST):
 
@@ -245,7 +245,7 @@ python3 app.py
   -d '{"subject": "Математика", "teacher": "Иванов И.И.", "time": "2025-09-23T10:00:00"}' \
   http://127.0.0.1:5000/api/schedule | jq`
 
-<img width="1155" height="524" alt="image" src="https://github.com/user-attachments/assets/3bf336c0-cc90-4890-a79f-c77226ed75a0" />
+<img width="700" alt="image" src="https://github.com/user-attachments/assets/3bf336c0-cc90-4890-a79f-c77226ed75a0" />
 
 Сервер отвечает на запрос и пишет дату создания занятия в левом терминале.
 Для статистики и истории добавим второе занятие:
@@ -256,15 +256,15 @@ curl -X POST -H "Content-Type: application/json" \
   http://127.0.0.1:5000/api/schedule | jq
 ```
 
-<img width="1149" height="518" alt="image" src="https://github.com/user-attachments/assets/c6e4090d-780d-4850-aa9a-fde96c22760b" />
+<img width="700" alt="image" src="https://github.com/user-attachments/assets/c6e4090d-780d-4850-aa9a-fde96c22760b" />
 
 С помощью команды `curl -s http://127.0.0.1:5000/api/schedule | jq` получим список полного расписания, которое у нас есть (GET):
 
-<img width="572" height="436" alt="image" src="https://github.com/user-attachments/assets/fe31cf53-22e4-4b68-81c3-2695cd293fbc" />
+<img width="400" alt="image" src="https://github.com/user-attachments/assets/fe31cf53-22e4-4b68-81c3-2695cd293fbc" />
 
 С помощью команды `curl -s http://127.0.0.1:5000/api/schedule/1 | jq` получим занятие по ID (id: 1):
 
-<img width="554" height="223" alt="image" src="https://github.com/user-attachments/assets/7da01a57-d13c-4982-a011-f2656f96c196" />
+<img width="400" alt="image" src="https://github.com/user-attachments/assets/7da01a57-d13c-4982-a011-f2656f96c196" />
 
 Обновим данные по занятию 1 (PUT): сменим ФИ и дату, а предмет оставим тем же:
 
@@ -274,7 +274,7 @@ curl -X PUT -H "Content-Type: application/json" \
   http://127.0.0.1:5000/api/schedule/1 | jq
 ```
 
-<img width="576" height="433" alt="image" src="https://github.com/user-attachments/assets/9b417e83-5ebe-4a28-90c7-d1badc9160cc" />
+<img width="400" alt="image" src="https://github.com/user-attachments/assets/9b417e83-5ebe-4a28-90c7-d1badc9160cc" />
 
 Удалим занятие 1 (DELETED) и проверим, что оно удалилось, выведя содержание списка на экран терминала:
 
@@ -282,11 +282,11 @@ curl -X PUT -H "Content-Type: application/json" \
 curl -X DELETE http://127.0.0.1:5000/api/schedule/1
 ```
 
-<img width="563" height="432" alt="image" src="https://github.com/user-attachments/assets/360e3ecd-603f-4d3f-9dc4-ed7b46983aca" />
+<img width="400" alt="image" src="https://github.com/user-attachments/assets/360e3ecd-603f-4d3f-9dc4-ed7b46983aca" />
 
 На каждый запрос сервер выдавал ответ с соответствующими HTTP-статусами (200, 201, 404).
 
-<img width="594" height="519" alt="image" src="https://github.com/user-attachments/assets/afefeb93-3b2f-44ed-81f5-85e69df8b086" />
+<img width="400" alt="image" src="https://github.com/user-attachments/assets/afefeb93-3b2f-44ed-81f5-85e69df8b086" />
 
 ### Задание 3. Настройка Nginx как обратного прокси с кешированием
 #### 3.1. Установка Nginx
@@ -294,18 +294,18 @@ curl -X DELETE http://127.0.0.1:5000/api/schedule/1
 `sudo apt update`
 `sudo apt install nginx -y`
 
-<img width="1139" height="717" alt="image" src="https://github.com/user-attachments/assets/fa02cd3f-58a6-4100-af3f-6595b3f2100d" />
+<img width="700" alt="image" src="https://github.com/user-attachments/assets/fa02cd3f-58a6-4100-af3f-6595b3f2100d" />
 
 `sudo systemctl start nginx`
 `sudo systemctl enable nginx`
 
-<img width="1107" height="145" alt="image" src="https://github.com/user-attachments/assets/c0d6719d-fcf0-43d2-bb50-f7e44ec26d81" />
+<img width="700" alt="image" src="https://github.com/user-attachments/assets/c0d6719d-fcf0-43d2-bb50-f7e44ec26d81" />
 
 Проверка статуса подключения Nginx:
 
 `sudo systemctl status nginx`
 
-<img width="1107" height="374" alt="image" src="https://github.com/user-attachments/assets/ccc9bb55-af3e-488d-9188-94f3ff436611" />
+<img width="700" alt="image" src="https://github.com/user-attachments/assets/ccc9bb55-af3e-488d-9188-94f3ff436611" />
 
 #### 3.2 Настройка кеширования (создание "склада")
 Отредактируем главный конфиг Nginx:
@@ -316,7 +316,7 @@ sudo nano /etc/nginx/nginx.conf
 
 Ответ терминала на команду:
 
-<img width="1058" height="719" alt="image" src="https://github.com/user-attachments/assets/f7b36668-b9c7-4a7d-b43b-ef321681501c" />
+<img width="700" alt="image" src="https://github.com/user-attachments/assets/f7b36668-b9c7-4a7d-b43b-ef321681501c" />
 
 В секции http { ... } (после настроек gzip) добавим строку:
 ```
@@ -339,7 +339,7 @@ proxy_cache_path /var/cache/nginx levels=1:2 keys_zone=schedule_cache:10m inacti
 sudo nano /etc/nginx/sites-available/default
 ```
 
-<img width="1046" height="730" alt="image" src="https://github.com/user-attachments/assets/727efbb6-919d-46fd-8ce7-436b0d98c04c" />
+<img width="700" alt="image" src="https://github.com/user-attachments/assets/727efbb6-919d-46fd-8ce7-436b0d98c04c" />
 
 В секции server { ... } после строки root /var/www/html; добавим:
 
@@ -372,14 +372,14 @@ sudo nginx -t
 
 Сообщение об успешной настройке nginx: 
 
-<img width="1009" height="98" alt="image" src="https://github.com/user-attachments/assets/6844b5a6-246d-4582-9ca8-1780e6d3bcab" />
+<img width="700" alt="image" src="https://github.com/user-attachments/assets/6844b5a6-246d-4582-9ca8-1780e6d3bcab" />
 
 ### Подготовка к тестированию прокси
 
 #### 📌 Тест 1. Проверка, работает ли Nginx сам по себе
 Проверим, отвечает ли Nginx на обычные запросы (не к API) командой `curl http://localhost`:
 
-<img width="1150" height="725" alt="image" src="https://github.com/user-attachments/assets/de07a709-d872-4444-8368-c9ddafa00c28" />
+<img width="700" alt="image" src="https://github.com/user-attachments/assets/de07a709-d872-4444-8368-c9ddafa00c28" />
 
 Это HTML-код приветственной страницы Nginx. Значит, Nginx работает!
 
@@ -388,14 +388,14 @@ sudo nginx -t
 
 `curl http://localhost/api/schedule`
 
-<img width="1120" height="181" alt="image" src="https://github.com/user-attachments/assets/2fd748f9-9269-49bf-81af-aa40be6036c6" />
+<img width="700" alt="image" src="https://github.com/user-attachments/assets/2fd748f9-9269-49bf-81af-aa40be6036c6" />
 
 Cписок занятий пуст (так как были удалены все занятия). Tест пройден!
 
 #### 📌 Тест 3. Проверка кеширования (HIT/MISS)
 Это самый важный тест. Выполним команду `curl -i http://localhost/api/schedule | grep X-Cache-Status` два раза подряд:
 
-<img width="744" height="516" alt="image" src="https://github.com/user-attachments/assets/032c4803-8691-4b82-b237-63dd8d472e8b" />
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/032c4803-8691-4b82-b237-63dd8d472e8b" />
 
 Значения:
 * `EXPIRED`: кеш был, но истёк (прошло больше 5 минут). Nginx пошёл к Flask за свежими данными;
@@ -407,7 +407,7 @@ Cписок занятий пуст (так как были удалены вс�
 Получили кэшированный ответ в тесте 3 (HIT), подождали 5 минут и снова выполнили запрос: видим expired и hit.
 Все, как и должно быть!
 
-<img width="1141" height="522" alt="image" src="https://github.com/user-attachments/assets/359ede62-323f-41ca-8770-2c910377c4e5" />
+<img width="700" alt="image" src="https://github.com/user-attachments/assets/359ede62-323f-41ca-8770-2c910377c4e5" />
 
 📌 Тест 5. Проверка, что POST не кэшируется
 POST-запросы изменяют данные, поэтому они не должны кэшироваться.
@@ -420,7 +420,7 @@ curl -i -X POST -H "Content-Type: application/json" \
   http://localhost/api/schedule | grep X-Cache-Status
 ```
 
-<img width="701" height="311" alt="image" src="https://github.com/user-attachments/assets/419f743d-ff95-464e-94dd-cf41f16e98b5" />
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/419f743d-ff95-464e-94dd-cf41f16e98b5" />
 
 Важный момент: В выводе нет строки X-Cache-Status, потому что POST-запросы не кэшируются — это правильно!
 
@@ -430,15 +430,15 @@ curl -i -X POST -H "Content-Type: application/json" \
 curl http://localhost/api/schedule | jq
 ```
 
-<img width="1098" height="315" alt="image" src="https://github.com/user-attachments/assets/341aa04d-ec6d-493f-b139-89e964718483" />
+<img width="700" alt="image" src="https://github.com/user-attachments/assets/341aa04d-ec6d-493f-b139-89e964718483" />
 
 ## Архитектура инструментов REST API:
 
-<img width="1280" height="538" alt="image" src="https://github.com/user-attachments/assets/238525da-f2c0-4587-bb45-e2ed854a74f7" />
+<img width="750" alt="image" src="https://github.com/user-attachments/assets/238525da-f2c0-4587-bb45-e2ed854a74f7" />
 
 ## Архитектура инструментов REST API с Nginx:
 
-<img width="1280" height="1235" alt="image" src="https://github.com/user-attachments/assets/278170c3-2155-408b-b38e-972ead176320" />
+<img width="750" alt="image" src="https://github.com/user-attachments/assets/278170c3-2155-408b-b38e-972ead176320" />
 
 ## Выводы:
 
