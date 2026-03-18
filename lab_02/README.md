@@ -37,7 +37,7 @@ sudo apt update
 sudo apt install curl -y
 sudo apt install jq -y
 ```
-<img width="500" alt="image" src="https://github.com/user-attachments/assets/a6990fc1-e4db-4f3f-aff0-4803dd3371c2" />
+<img width="200" alt="image" src="https://github.com/user-attachments/assets/a6990fc1-e4db-4f3f-aff0-4803dd3371c2" />
 <img width="500" alt="image" src="https://github.com/user-attachments/assets/7e279de6-8d5f-4f91-866d-e8955830153a" />
 <img width="500" alt="image" src="https://github.com/user-attachments/assets/4aa80d0a-5e5f-4a35-8a7b-9c0bd09d8126" />
 
