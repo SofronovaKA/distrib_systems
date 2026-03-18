@@ -37,9 +37,9 @@ sudo apt update
 sudo apt install curl -y
 sudo apt install jq -y
 ```
-<img width="200" alt="image" src="https://github.com/user-attachments/assets/a6990fc1-e4db-4f3f-aff0-4803dd3371c2" />
-<img width="500" alt="image" src="https://github.com/user-attachments/assets/7e279de6-8d5f-4f91-866d-e8955830153a" />
-<img width="500" alt="image" src="https://github.com/user-attachments/assets/4aa80d0a-5e5f-4a35-8a7b-9c0bd09d8126" />
+<img width="400" alt="image" src="https://github.com/user-attachments/assets/a6990fc1-e4db-4f3f-aff0-4803dd3371c2" />
+<img width="400" alt="image" src="https://github.com/user-attachments/assets/7e279de6-8d5f-4f91-866d-e8955830153a" />
+<img width="400" alt="image" src="https://github.com/user-attachments/assets/4aa80d0a-5e5f-4a35-8a7b-9c0bd09d8126" />
 
 #### Проверка установки curl:
 
@@ -47,7 +47,7 @@ sudo apt install jq -y
 curl --version
 ```
 
-<img width="1177" height="199" alt="image" src="https://github.com/user-attachments/assets/635ab60a-abcd-43dc-88a7-874d7a7df347" />
+<img width="400" alt="image" src="https://github.com/user-attachments/assets/635ab60a-abcd-43dc-88a7-874d7a7df347" />
 
 #### 1.2. Анализ структуры ответа
 Простой запрос (нечитабельный ответ в виде одной непрерывной строки формата JSON):
@@ -56,7 +56,7 @@ curl --version
 curl https://randomuser.me/api/
 ```
 
-<img width="1179" height="297" alt="image" src="https://github.com/user-attachments/assets/2467b4fe-4801-40d4-a724-086c81f57487" />
+<img width="400" alt="image" src="https://github.com/user-attachments/assets/2467b4fe-4801-40d4-a724-086c81f57487" />
 
 Форматированный вывод с помощью jq:
 
@@ -64,8 +64,8 @@ curl https://randomuser.me/api/
 curl -s https://randomuser.me/api/ | jq
 ```
 
-<img width="1215" height="793" alt="image" src="https://github.com/user-attachments/assets/532f4db2-f466-4a58-b0f4-d6d233b42926" />
-<img width="1197" height="786" alt="image" src="https://github.com/user-attachments/assets/c990d7a4-026c-4431-99bd-7ae5f3b52fc9" />
+<img width="400" alt="image" src="https://github.com/user-attachments/assets/532f4db2-f466-4a58-b0f4-d6d233b42926" />
+<img width="400" alt="image" src="https://github.com/user-attachments/assets/c990d7a4-026c-4431-99bd-7ae5f3b52fc9" />
 
 Флаг -s (silent) убирает статистику загрузки.
 
@@ -80,7 +80,7 @@ curl -s https://randomuser.me/api/ | jq
 curl -i https://randomuser.me/api/
 ```
 
-<img width="1203" height="671" alt="image" src="https://github.com/user-attachments/assets/99af4d8b-fc84-4349-b2f3-2abded77c12c" />
+<img width="400" alt="image" src="https://github.com/user-attachments/assets/99af4d8b-fc84-4349-b2f3-2abded77c12c" />
 
 **Ключевые заголовки:**
 * `HTTP/2 200` — код ответа
@@ -94,7 +94,7 @@ curl -i https://randomuser.me/api/
 curl -I https://randomuser.me/api/
 ```
 
-<img width="1163" height="387" alt="image" src="https://github.com/user-attachments/assets/2944ea5a-63c9-46e8-852e-d12c637249d9" />
+<img width="400" alt="image" src="https://github.com/user-attachments/assets/2944ea5a-63c9-46e8-852e-d12c637249d9" />
 
 Далее - извлечение конкретных полей. Получим ФИ пользователя, его email и фото:
 
@@ -104,7 +104,7 @@ curl -s https://randomuser.me/api/ | jq '.results[0].email'
 curl -s https://randomuser.me/api/ | jq '.results[0].picture.large'
 ```
 
-<img width="1206" height="325" alt="image" src="https://github.com/user-attachments/assets/f50b895f-6ce5-454a-aa01-2e6f4f846e0c" />
+<img width="400" alt="image" src="https://github.com/user-attachments/assets/f50b895f-6ce5-454a-aa01-2e6f4f846e0c" />
 
 ### Задание 2. Разработка REST API "Расписание занятий"
 
