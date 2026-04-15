@@ -146,9 +146,13 @@ services:
 ### 1. Запуск RabbitMQ (Docker)
 
 ```bash
-docker run -d --name rabbitmq -p 5672:5672 -p 15672:15672 \
+docker run -d 9d02640acc7d rabbitmq -p 5672:5672 -p 15672:15672 \
   -e RABBITMQ_DEFAULT_USER=user -e RABBITMQ_DEFAULT_PASS=password \
   rabbitmq:3.9-management
+```
+
+```bash
+docker-compose up -d
 ```
 
 ### 2. Запуск gRPC сервера
