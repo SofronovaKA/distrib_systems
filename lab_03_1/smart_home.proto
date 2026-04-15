@@ -1,0 +1,47 @@
+
+syntax = "proto3";
+
+package smarthome;
+
+// Сервис умного дома с тремя методами
+service SmartHomeService {
+    // Метод 1: Управление умным домом (включить/выключить свет)
+    rpc ControlDevice (DeviceRequest) returns (DeviceResponse) {}
+    
+    // Метод 2: Конвертация Markdown в HTML
+    rpc ConvertMarkdown (MarkdownRequest) returns (MarkdownResponse) {}
+    
+    // Метод 3: Удаление дубликатов из списка
+    rpc RemoveDuplicates (DuplicateRequest) returns (DuplicateResponse) {}
+}
+
+// ===== Структуры для умного дома =====
+message DeviceRequest {
+    string command = 1;
+    string location = 2;
+}
+
+message DeviceResponse {
+    string result = 1;
+    bool success = 2;
+}
+
+// ===== Структуры для Markdown =====
+message MarkdownRequest {
+    string text = 1;
+}
+
+message MarkdownResponse {
+    string html = 1;
+    bool success = 2;
+}
+
+// ===== Структуры для удаления дубликатов =====
+message DuplicateRequest {
+    repeated string words = 1;
+}
+
+message DuplicateResponse {
+    repeated string unique_words = 1;
+    bool success = 2;
+}
