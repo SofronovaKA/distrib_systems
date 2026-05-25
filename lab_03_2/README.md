@@ -45,12 +45,17 @@
 
 ```mermaid
 flowchart TD
-    FD[FailureDetector<br/>BaseSimulator]
+    FD[FailureDetector BaseSimulator]
     
-    FD --> Serf[SerfSimulator<br/>Gossip]
-    FD --> HB[HeartbeatSimulator<br/>Full-mesh]
-    FD --> Ping[PingSimulator<br/>Random probe]
-    FD --> Adaptive[AdaptiveSerfSimulator<br/>Variant 17]
+    FD --> Serf
+    FD --> HB
+    FD --> Ping
+    FD --> Adaptive
+    
+    Serf[SerfSimulator Gossip]
+    HB[HeartbeatSimulator Full-mesh]
+    Ping[PingSimulator Random probe]
+    Adaptive[AdaptiveSerfSimulator Variant 17]
     
     Serf --> S1[Fanout: random neighbors]
     Serf --> S2[Packet loss]
@@ -64,23 +69,30 @@ flowchart TD
     
     Adaptive --> A1[Base fanout: 3]
     Adaptive --> A2[Max fanout: 10]
-    Adaptive --> A3[Loss threshold: 30%]
-    Adaptive --> A4[Adjust fanout dynamically]
+    Adaptive --> A3[Loss threshold: 30 percent]
+    Adaptive --> A4[Dynamic adjustment]
     
-    Serf --> M1[First detection]
-    Serf --> M2[Convergence time]
-    Serf --> M3[Messages count]
+    S1 --> M
+    S2 --> M
+    S3 --> M
+    H1 --> M
+    H2 --> M
+    P1 --> M
+    P2 --> M
+    A1 --> M2
+    A2 --> M2
+    A3 --> M2
+    A4 --> M2
     
-    HB --> M1
-    HB --> M2
-    HB --> M3
+    M[Common metrics]
+    M2[Variant 17 metrics]
     
-    Ping --> M1
-    Ping --> M2
-    Ping --> M3
+    M --> C1[First detection]
+    M --> C2[Convergence time]
+    M --> C3[Total messages]
     
-    Adaptive --> M4[Average fanout]
-    Adaptive --> M5[Speedup]
+    M2 --> C4[Average fanout]
+    M2 --> C5[Speedup]
 ```
 
 Симуляция реализована на Python в среде Google Colab и состоит из следующих компонентов:
