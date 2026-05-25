@@ -52,33 +52,32 @@ graph TD
     FD --> Ping[PingSimulator<br/>Random probe]
     FD --> Adaptive[AdaptiveSerfSimulator<br/>Variant 17]
     
-    Serf --> F1[Fanout: random neighbors]
-    Serf --> PL1[Packet loss]
-    Serf --> Prop1[Viral propagation]
-    Serf --> Upd1[Update knowledge matrix]
+    Serf --> F1[Fanout select random neighbors]
+    Serf --> PL1[Packet loss probability]
+    Serf --> Prop1[Viral spread]
     
     HB --> F2[Poll all nodes]
     HB --> Prop2[Each node sends I am alive]
     
     Ping --> F3[Random single node]
-    Ping --> Prop3[Low traffic, slow detection]
+    Ping --> Prop3[Low traffic]
     
-    Adaptive --> Base[Base fanout = 3]
-    Adaptive --> Max[max fanout = 10]
-    Adaptive --> Thresh[Loss threshold = 30 percent]
-    Adaptive --> Window[Window = 10 attempts]
+    Adaptive --> Base[Base fanout equals 3]
+    Adaptive --> MaxFanout[Max fanout equals 10]
+    Adaptive --> Thresh[Loss threshold 30 percent]
+    Adaptive --> Window[Window size 10 attempts]
     
     Adaptive --> Logic{Adaptation logic}
-    Logic -->|loss > 30%| Inc[fanout = min(10, fanout+1)]
-    Logic -->|loss < 15% and fanout > 3| Dec[fanout = max(3, fanout-1)]
-    Logic -->|else| Stay[fanout unchanged]
+    Logic --> Inc[If loss above 30 percent increase fanout]
+    Logic --> Dec[If loss below 15 percent and fanout above 3 decrease fanout]
+    Logic --> Stay[Else fanout unchanged]
     
     subgraph Metrics
         M1[First detection time]
         M2[Convergence time]
-        M3[Total messages]
-        M4[Average fanout]
-        M5[Speedup vs fixed fanout]
+        M3[Total messages count]
+        M4[Average fanout value]
+        M5[Speedup ratio]
     end
     
     Serf --> M1
