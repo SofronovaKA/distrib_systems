@@ -43,6 +43,50 @@
 
 ## Архитектура системы
 
+```mermaid
+graph TD
+    FD[FailureDetector<br/>BaseSimulator]
+    
+    FD --> Serf[SerfSimulator<br/>Gossip]
+    FD --> HB[HeartbeatSimulator<br/>Full-mesh]
+    FD --> Ping[PingSimulator<br/>Random Probe]
+    FD --> Adaptive[AdaptiveSerfSimulator<br/>Вариант 17]
+    
+    Serf --> F1[Fanout: выбор случайных соседей]
+    Serf --> PL1[Packet Loss: вероятность потери]
+    Serf --> Prop1[Распространение: вирусное]
+    
+    HB --> F2[Полный опрос всех узлов]
+    HB --> Prop2[Каждый шлёт "я жив"]
+    
+    Ping --> F3[Случайный выбор одного узла]
+    Ping --> Prop3[Низкий трафик]
+    
+    Adaptive --> Base[Базовый Fanout = 3]
+    Adaptive --> Max[Максимальный Fanout = 10]
+    Adaptive --> Thresh[Порог потерь = 30%]
+    Adaptive --> Window[Окно = 10 попыток]
+    
+    Adaptive --> Logic{Алгоритм}
+    Logic -->|потери > 30%| Inc[Fanout += 1]
+    Logic -->|потери < 15%| Dec[Fanout -= 1]
+    Logic -->|иначе| Stay[Fanout неизменен]
+    
+    subgraph Метрики
+        M1[First detection]
+        M2[Convergence time]
+        M3[Messages]
+        M4[Средний Fanout]
+        M5[Speedup]
+    end
+    
+    Serf --> M1
+    HB --> M1
+    Ping --> M1
+    Adaptive --> M4
+    Adaptive --> M5
+```
+
 Симуляция реализована на Python в среде Google Colab и состоит из следующих компонентов:
 
 ### 1. Базовые классы
