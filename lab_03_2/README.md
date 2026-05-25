@@ -140,9 +140,7 @@ flowchart TD
 
 ### Формула
 
-\[
-\text{Bandwidth (bps)} = \frac{1}{\text{Interval}} \times \text{Fanout} \times \text{ActiveNodes} \times \text{PacketSize} \times \text{Overhead} \times 8
-\]
+Bandwidth (bps) = (1 / Interval) * Fanout * ActiveNodes * PacketSize * Overhead * 8
 
 ### Константы
 
@@ -164,17 +162,9 @@ flowchart TD
 
 ### Расчёт для фиксированного Fanout = 3
 
-\[
-\text{Messages/s} = \frac{1}{0.2} \times 3 \times 95 = 5 \times 3 \times 95 = 1425 \text{ сообщений/с}
-\]
+Messages/s = (1 / 0.2) * 3 * 95 = 5 * 3 * 95 = 1425 сообщений/с
 
-\[
-\text{Bandwidth} = 1425 \times 1024 \times 1.2 \times 8 = 1425 \times 9830.4 = 14\,008\,320 \text{ бит/с}
-\]
-
-\[
-\boxed{14.0 \text{ Мбит/с}}
-\]
+Bandwidth = 1425 * 1024 * 1.2 * 8 = 14 008 320 бит/с = 14.0 Мбит/с
 
 ### Влияние потерь пакетов
 
@@ -191,17 +181,9 @@ flowchart TD
 
 При высоких потерях адаптивный алгоритм увеличивает Fanout для компенсации. Пример при Fanout = 6:
 
-\[
-\text{Messages/s} = 5 \times 6 \times 95 = 2850 \text{ сообщений/с}
-\]
+Messages/s = 5 * 6 * 95 = 2850 сообщений/с
 
-\[
-\text{Bandwidth} = 2850 \times 1024 \times 1.2 \times 8 = 2850 \times 9830.4 = 28\,016\,640 \text{ бит/с}
-\]
-
-\[
-\boxed{28.0 \text{ Мбит/с}}
-\]
+Bandwidth = 2850 * 1024 * 1.2 * 8 = 28 016 640 бит/с = 28.0 Мбит/с
 
 ### Сводная таблица
 
