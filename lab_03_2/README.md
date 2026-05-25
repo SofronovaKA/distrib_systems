@@ -44,7 +44,7 @@
 ## Архитектура системы
 
 ```mermaid
-graph TD
+flowchart TD
     FD[FailureDetector<br/>BaseSimulator]
     
     FD --> Serf[SerfSimulator<br/>Gossip]
@@ -52,45 +52,35 @@ graph TD
     FD --> Ping[PingSimulator<br/>Random probe]
     FD --> Adaptive[AdaptiveSerfSimulator<br/>Variant 17]
     
-    Serf --> F1[Fanout select random neighbors]
-    Serf --> PL1[Packet loss probability]
-    Serf --> Prop1[Viral spread]
+    Serf --> S1[Fanout: random neighbors]
+    Serf --> S2[Packet loss]
+    Serf --> S3[Viral spread]
     
-    HB --> F2[Poll all nodes]
-    HB --> Prop2[Each node sends I am alive]
+    HB --> H1[Poll all nodes]
+    HB --> H2[O N square traffic]
     
-    Ping --> F3[Random single node]
-    Ping --> Prop3[Low traffic]
+    Ping --> P1[Random single node]
+    Ping --> P2[O N traffic]
     
-    Adaptive --> Base[Base fanout equals 3]
-    Adaptive --> MaxFanout[Max fanout equals 10]
-    Adaptive --> Thresh[Loss threshold 30 percent]
-    Adaptive --> Window[Window size 10 attempts]
+    Adaptive --> A1[Base fanout: 3]
+    Adaptive --> A2[Max fanout: 10]
+    Adaptive --> A3[Loss threshold: 30%]
+    Adaptive --> A4[Adjust fanout dynamically]
     
-    Adaptive --> Logic{Adaptation logic}
-    Logic --> Inc[If loss above 30 percent increase fanout]
-    Logic --> Dec[If loss below 15 percent and fanout above 3 decrease fanout]
-    Logic --> Stay[Else fanout unchanged]
+    Serf --> M1[First detection]
+    Serf --> M2[Convergence time]
+    Serf --> M3[Messages count]
     
-    subgraph Metrics
-        M1[First detection time]
-        M2[Convergence time]
-        M3[Total messages count]
-        M4[Average fanout value]
-        M5[Speedup ratio]
-    end
-    
-    Serf --> M1
-    Serf --> M2
-    Serf --> M3
     HB --> M1
     HB --> M2
     HB --> M3
+    
     Ping --> M1
     Ping --> M2
     Ping --> M3
-    Adaptive --> M4
-    Adaptive --> M5
+    
+    Adaptive --> M4[Average fanout]
+    Adaptive --> M5[Speedup]
 ```
 
 Симуляция реализована на Python в среде Google Colab и состоит из следующих компонентов:
