@@ -43,9 +43,6 @@
 
 ## Архитектура системы
 
-
----
-
 ```mermaid
 flowchart TD
     FD[FailureDetector BaseSimulator]
@@ -61,45 +58,41 @@ flowchart TD
     Adaptive[AdaptiveSerfSimulator Variant 17]
     
     Serf --> S1[Fanout: random neighbors]
-    Serf --> S2[Packet loss probability]
-    Serf --> S3[Viral propagation]
+    Serf --> S2[Packet loss]
+    Serf --> S3[Viral spread]
     
-    HB --> H1[Poll all nodes every round]
-    HB --> H2[Traffic: O N square]
+    HB --> H1[Poll all nodes]
+    HB --> H2[O N square traffic]
     
-    Ping --> P1[Random single node probe]
-    Ping --> P2[Traffic: O N]
+    Ping --> P1[Random single node]
+    Ping --> P2[O N traffic]
     
     Adaptive --> A1[Base fanout: 3]
-    Adaptive --> A2[Maximum fanout: 10]
+    Adaptive --> A2[Max fanout: 10]
     Adaptive --> A3[Loss threshold: 30 percent]
-    Adaptive --> A4[Loss window: 10 attempts]
-    Adaptive --> A5[If loss > 30 percent: fanout up]
-    Adaptive --> A6[If loss < 15 percent: fanout down]
+    Adaptive --> A4[Dynamic adjustment]
     
-    S1 --> MET
-    S2 --> MET
-    S3 --> MET
-    H1 --> MET
-    H2 --> MET
-    P1 --> MET
-    P2 --> MET
+    S1 --> M
+    S2 --> M
+    S3 --> M
+    H1 --> M
+    H2 --> M
+    P1 --> M
+    P2 --> M
+    A1 --> M2
+    A2 --> M2
+    A3 --> M2
+    A4 --> M2
     
-    MET[Common metrics]
+    M[Common metrics]
+    M2[Variant 17 metrics]
     
-    MET --> C1[First detection time]
-    MET --> C2[Convergence time]
-    MET --> C3[Total messages count]
+    M --> C1[First detection]
+    M --> C2[Convergence time]
+    M --> C3[Total messages]
     
-    A1 --> MET17[Variant 17 metrics]
-    A2 --> MET17
-    A3 --> MET17
-    A4 --> MET17
-    A5 --> MET17
-    A6 --> MET17
-    
-    MET17 --> C4[Average fanout value]
-    MET17 --> C5[Speedup ratio]
+    M2 --> C4[Average fanout]
+    M2 --> C5[Speedup]
 ```
 
 Симуляция реализована на Python в среде Google Colab и состоит из следующих компонентов:
