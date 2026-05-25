@@ -240,7 +240,7 @@ Bandwidth = 2850 * 1024 * 1.2 * 8 = 28 016 640 бит/с = 28.0 Мбит/с
 
 ## Ссылка на Google Colab
 
-[Открыть]([https://colab.research.google.com/drive/твоя_ссылка](https://colab.research.google.com/drive/1cRCealQJVRJMUfMywcJC-1kb7G_NbW6N?hl=ru#scrollTo=UfVgfY0VoU_o))
+[Открыть](https://colab.research.google.com/drive/1cRCealQJVRJMUfMywcJC-1kb7G_NbW6N?hl=ru)
 
 ---
 
