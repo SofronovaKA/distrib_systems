@@ -46,9 +46,6 @@
 
 ---
 
-## Если хочешь ещё вертикальнее и крупнее
-
-```markdown
 ```mermaid
 flowchart TD
     FD[FailureDetector BaseSimulator]
