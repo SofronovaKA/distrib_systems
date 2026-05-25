@@ -49,40 +49,47 @@ graph TD
     
     FD --> Serf[SerfSimulator<br/>Gossip]
     FD --> HB[HeartbeatSimulator<br/>Full-mesh]
-    FD --> Ping[PingSimulator<br/>Random Probe]
-    FD --> Adaptive[AdaptiveSerfSimulator<br/>Вариант 17]
+    FD --> Ping[PingSimulator<br/>Random probe]
+    FD --> Adaptive[AdaptiveSerfSimulator<br/>Variant 17]
     
-    Serf --> F1[Fanout: выбор случайных соседей]
-    Serf --> PL1[Packet Loss: вероятность потери]
-    Serf --> Prop1[Распространение: вирусное]
+    Serf --> F1[Fanout: random neighbors]
+    Serf --> PL1[Packet loss]
+    Serf --> Prop1[Viral propagation]
+    Serf --> Upd1[Update knowledge matrix]
     
-    HB --> F2[Полный опрос всех узлов]
-    HB --> Prop2[Каждый шлёт "я жив"]
+    HB --> F2[Poll all nodes]
+    HB --> Prop2[Each node sends I am alive]
     
-    Ping --> F3[Случайный выбор одного узла]
-    Ping --> Prop3[Низкий трафик]
+    Ping --> F3[Random single node]
+    Ping --> Prop3[Low traffic, slow detection]
     
-    Adaptive --> Base[Базовый Fanout = 3]
-    Adaptive --> Max[Максимальный Fanout = 10]
-    Adaptive --> Thresh[Порог потерь = 30%]
-    Adaptive --> Window[Окно = 10 попыток]
+    Adaptive --> Base[Base fanout = 3]
+    Adaptive --> Max[max fanout = 10]
+    Adaptive --> Thresh[Loss threshold = 30 percent]
+    Adaptive --> Window[Window = 10 attempts]
     
-    Adaptive --> Logic{Алгоритм}
-    Logic -->|потери > 30%| Inc[Fanout += 1]
-    Logic -->|потери < 15%| Dec[Fanout -= 1]
-    Logic -->|иначе| Stay[Fanout неизменен]
+    Adaptive --> Logic{Adaptation logic}
+    Logic -->|loss > 30%| Inc[fanout = min(10, fanout+1)]
+    Logic -->|loss < 15% and fanout > 3| Dec[fanout = max(3, fanout-1)]
+    Logic -->|else| Stay[fanout unchanged]
     
-    subgraph Метрики
-        M1[First detection]
+    subgraph Metrics
+        M1[First detection time]
         M2[Convergence time]
-        M3[Messages]
-        M4[Средний Fanout]
-        M5[Speedup]
+        M3[Total messages]
+        M4[Average fanout]
+        M5[Speedup vs fixed fanout]
     end
     
     Serf --> M1
+    Serf --> M2
+    Serf --> M3
     HB --> M1
+    HB --> M2
+    HB --> M3
     Ping --> M1
+    Ping --> M2
+    Ping --> M3
     Adaptive --> M4
     Adaptive --> M5
 ```
