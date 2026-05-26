@@ -379,7 +379,7 @@ CMD ["python", "app.py"]
 
 **Результат команды `docker compose ps`**
 
-![Команда docker compose ps](images_lab_05/ps.png)
+<img width="1280" height="270" alt="image" src="https://github.com/user-attachments/assets/523724f2-0f6a-4b36-8a1d-4485f0339d3f" /> 
 
 **Описание:**
 
@@ -403,7 +403,7 @@ CMD ["python", "app.py"]
 
 **Результат выполнения 1 задания:**
 
-![Зеленый фон](images_lab_05/innovation.png)
+<img width="1280" height="270" alt="image" src="https://github.com/user-attachments/assets/994cee35-d0d8-437f-a363-5c92ba5a7696" /> 
 
 **Результат выполнения 2 задания:**
 
