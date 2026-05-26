@@ -4,7 +4,7 @@ from flask import Flask
 
 app = Flask(__name__)
 
-cache = redis.Redis(host='redis', port=6379)
+cache = redis.Redis(host='127.0.0.1', port=6379)
 
 def get_hit_count():
     retries = 5
@@ -20,28 +20,28 @@ def get_hit_count():
 @app.route('/')
 def hello():
     count = get_hit_count()
-    # ИЗМЕНЕНИЕ ПО ВАРИАНТУ 17: изменен цвет фона через body style
+    
     return '''
     <!DOCTYPE html>
     <html>
     <head>
         <style>
-            body {
+            body {{
                 background-color: #d4edda;
                 font-family: Arial, sans-serif;
                 text-align: center;
                 margin-top: 50px;
-            }
-            h1 {
+            }}
+            h1 {{
                 color: #155724;
-            }
-            p {
+            }}
+            p {{
                 font-size: 18px;
-            }
-            strong {
+            }}
+            strong {{
                 font-size: 24px;
                 color: #0066cc;
-            }
+            }}
         </style>
     </head>
     <body>
