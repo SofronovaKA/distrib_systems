@@ -112,6 +112,7 @@ pip install flask requests cryptography
 
 ## Структура проекта
 
+```
 lab_04/
 ├── certificate/
 │   ├── ca_cert.pem
@@ -130,6 +131,7 @@ lab_04/
 ├── generate_sertificates.sh
 ├── server.py
 └── README.md
+```
 
 ---
 
