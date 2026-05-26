@@ -411,7 +411,7 @@ CMD ["python", "app.py"]
 
 **Результат выполнения 3 задания:**
 
-![Пустая папка](images_lab_05/logs.png)
+<img width="1280" height="699" alt="image" src="https://github.com/user-attachments/assets/1b31b872-c480-4a9d-b2e3-0a4f3c88b746" /> 
 
 ---
 
