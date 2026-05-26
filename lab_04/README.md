@@ -82,7 +82,7 @@ graph TD
   * выполняют бизнес-логику (аналитические операции) согласно индивидуальному заданию;
   * формируют и возвращают зашифрованный JSON-ответ.
 
-## Уровни защиты:
+### Уровни защиты:
 
 * **транспортный:** TLS шифрует весь канал связи.
 * **аутентификация:** mTLS обеспечивает двустороннюю проверку подлинности клиента и сервера.
@@ -107,6 +107,29 @@ graph TD
 ```bash
 pip install flask requests cryptography
 ```
+
+---
+
+## Структура проекта
+
+lab_04/
+├── certificate/
+│   ├── ca_cert.pem
+│   ├── ca_cert.srl
+│   ├── ca_key.pem
+│   ├── client_cert.pem
+│   ├── client_key.pem
+│   ├── server_cert.pem
+│   └── server_key.pem
+├── images_lab_04/
+│   └── (скриншоты работы системы)
+├── client.py
+├── coordinator.py
+├── encryption_key.txt
+├── generate_key.py
+├── generate_sertificates.sh
+├── server.py
+└── README.md
 
 ---
 
