@@ -390,7 +390,7 @@ CMD ["python", "app.py"]
 
 **Работа приложения в браузере**
 
-![Интерфес](images_lab_05/innovation.png)
+<img width="1258" height="691" alt="image" src="https://github.com/user-attachments/assets/e1c0443f-6a6e-4a72-8bcb-68807fdb1924" />
 
 
 **Описание:**
@@ -403,7 +403,7 @@ CMD ["python", "app.py"]
 
 **Результат выполнения 1 задания:**
 
-<img width="1280" height="270" alt="image" src="https://github.com/user-attachments/assets/994cee35-d0d8-437f-a363-5c92ba5a7696" /> 
+<img width="1258" height="691" alt="image" src="https://github.com/user-attachments/assets/86606c1f-5412-43ac-a917-2fc61d5091e2" />
 
 **Результат выполнения 2 задания:**
 
