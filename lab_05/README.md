@@ -391,7 +391,7 @@ CMD ["python", "app.py"]
 
 **Работа приложения в браузере**
 
-blob:https://web.telegram.org/60f7a9aa-2c65-4924-b9a4-39564c7869a9
+<img src="https://web.telegram.org/60f7a9aa-2c65-4924-b9a4-39564c7869a9">
 
 **Описание:**
 
