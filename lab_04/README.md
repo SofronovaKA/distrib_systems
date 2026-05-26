@@ -144,7 +144,6 @@ lab_04/
 **Скрипт `generate_certificates.sh`**
 
 ```
-#!/bin/bash
 # 1. Генерация Центра Сертификации (CA)
 openssl req -x509 -newkey rsa:4096 -days 365 -nodes \
   -keyout ca_key.pem -out ca_cert.pem \
