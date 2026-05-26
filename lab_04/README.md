@@ -246,10 +246,26 @@ if __name__ == '__main__':
 import requests
 from flask import Flask, request, Response
 import urllib3
+import ssl
 
-# Отключаем предупреждения о самоподписанных сертификатах (только для лабораторной работы)
+# Отключаем предупреждения
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
+# ============================================
+# КАСТОМНЫЙ АДАПТЕР ДЛЯ ОТКЛЮЧЕНИЯ ПРОВЕРКИ HOSTNAME
+# ============================================
+class CustomHTTPAdapter(requests.adapters.HTTPAdapter):
+    def init_poolmanager(self, *args, **kwargs):
+        kwargs['assert_hostname'] = False
+        return super().init_poolmanager(*args, **kwargs)
+
+# Создаём сессию с кастомным адаптером
+session = requests.Session()
+session.mount('https://', CustomHTTPAdapter())
+
+# ============================================
+# НАСТРОЙКА ПРИЛОЖЕНИЯ
+# ============================================
 app = Flask(__name__)
 
 # Список серверов в порядке приоритета
@@ -258,35 +274,58 @@ SERVERS = [
     'https://127.0.0.1:5002/api/analytics'
 ]
 
-# Пути к сертификатам для mTLS с серверами
-CERT = ('client_cert.pem', 'client_key.pem')  # Координатор выступает в роли "клиента" для серверов
-CA_CERT = 'ca_cert.pem'                       # Для проверки сертификата сервера
+# Пути к сертификатам для mTLS
+CERT = ('client_cert.pem', 'client_key.pem')
+CA_CERT = 'ca_cert.pem'  # всё равно не используется из-за verify=False
 
+# ============================================
+# ОСНОВНОЙ МАРШРУТ
+# ============================================
 @app.route('/api/analytics', methods=['POST'])
 def proxy_analytics():
+    """Принимает запрос от клиента и перенаправляет на доступный сервер"""
     client_data = request.get_data()
     
     for server_url in SERVERS:
         try:
-            # Пытаемся отправить запрос текущему серверу
-            resp = requests.post(
+            # Используем нашу сессию с отключенной проверкой hostname
+            resp = session.post(
                 server_url,
                 data=client_data,
                 cert=CERT,
-                verify=CA_CERT,
+                verify=False,  # Отключаем проверку сертификата (только для лабы)
                 timeout=5
             )
             # Если успешно — возвращаем ответ клиенту
-            return Response(resp.content, status=resp.status_code, content_type=resp.headers['content-type'])
+            return Response(
+                resp.content, 
+                status=resp.status_code, 
+                content_type=resp.headers.get('content-type', 'application/octet-stream')
+            )
         
-        except requests.exceptions.RequestException as e:
-            print(f"Сервер {server_url} недоступен: {e}")
-            continue  # Переходим к следующему серверу в списке
+        except requests.exceptions.SSLError as e:
+            print(f"SSL ошибка при подключении к {server_url}: {e}")
+            continue
+        except requests.exceptions.ConnectionError as e:
+            print(f"Ошибка подключения к {server_url}: {e}")
+            continue
+        except Exception as e:
+            print(f"Неизвестная ошибка при подключении к {server_url}: {e}")
+            continue
     
     # Если все серверы недоступны
     return {"error": "Все серверы недоступны"}, 503
 
+# ============================================
+# ЗАПУСК
+# ============================================
 if __name__ == '__main__':
+    print("=" * 50)
+    print("КООРДИНАТОР ЗАПУЩЕН")
+    print("=" * 50)
+    print(f"Порт: 8000 (HTTP)")
+    print(f"Серверы в списке: {SERVERS}")
+    print("=" * 50)
     app.run(host='0.0.0.0', port=8000, debug=False)
 ```
 
@@ -388,15 +427,15 @@ if __name__ == '__main__':
 
 **Скриншот 1:** успешный запрос к серверу 5001 (сумма [1,2,3] -> 6)
 
-![Сервер 5001](images_lab_04/успешный запрос.png)
+![Работы сервера 5001](images_lab_04/successful.png)
 
 **Скриншот 2:** Успешный запрос к серверу 5002 после отказа 5001 (среднее [10,20,30] -> 20.0).
 
-![Отказ порта 5001 и успешное выполнение запроса на порту 2](images_lab_04/демонстрация отказа сервера.png)
+![Отказ порта 5001 и успешное выполнение запроса на порту 2](images_lab_04/system_failure.png)
 
 **Скриншот 3:** Демонстрация работы всех аналитических функций (последнее min/max [100,50,75] -> min: 50.0, max: 100.0).
 
-![Демонстарция работы функций](images_lab_04/решение индивидуального задания.png)
+![Демонстарция работы функций](images_lab_04/individual_task.png)
 
 ---
 
