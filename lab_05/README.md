@@ -407,7 +407,7 @@ CMD ["python", "app.py"]
 
 **Результат выполнения 2 задания:**
 
-![Версия docker](images_lab_05/version.png)
+<img width="1280" height="81" alt="image" src="https://github.com/user-attachments/assets/cd812872-fb75-4c37-b8a4-e7ad53e565fc" />
 
 **Результат выполнения 3 задания:**
 
