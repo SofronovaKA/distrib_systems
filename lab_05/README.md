@@ -130,22 +130,22 @@ def hello():
     <html>
     <head>
         <style>
-            body {
+            body {{
                 background-color: #d4edda;  /* светло-зеленый фон */
                 font-family: Arial, sans-serif;
                 text-align: center;
                 margin-top: 50px;
-            }
-            h1 {
+            }}
+            h1 {{
                 color: #155724;
-            }
-            p {
+            }}
+            p {{
                 font-size: 18px;
-            }
-            strong {
+            }}
+            strong {{
                 font-size: 24px;
                 color: #0066cc;
-            }
+            }}
         </style>
     </head>
     <body>
@@ -177,7 +177,6 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-# ИЗМЕНЕНИЕ ПО ВАРИАНТУ 17: создание пустой папки /logs
 RUN mkdir /logs
 
 CMD ["python", "app.py"]
@@ -186,7 +185,7 @@ CMD ["python", "app.py"]
 ### 4. docker-compose.yml (с измененной средой)
 
 ```yaml
-version: "3.8"   # ИЗМЕНЕНИЕ ПО ВАРИАНТУ 17: версия изменена на 3.8
+version: "3.8"
 
 services:
   web:
@@ -232,22 +231,22 @@ def hello():
     <html>
     <head>
         <style>
-            body {
+            body {{
                 background-color: #d4edda;  /* светло-зеленый фон */
                 font-family: Arial, sans-serif;
                 text-align: center;
                 margin-top: 50px;
-            }
-            h1 {
+            }}
+            h1 {{
                 color: #155724;
-            }
-            p {
+            }}
+            p {{
                 font-size: 18px;
-            }
-            strong {
+            }}
+            strong {{
                 font-size: 24px;
                 color: #0066cc;
-            }
+            }}
         </style>
     </head>
     <body>
@@ -285,7 +284,7 @@ services:
 **Что было изменено:**
 
 ```yaml
-version: "3.8"   # ИЗМЕНЕНИЕ: версия изменена с 3.9 на 3.8
+version: "3.8"
 
 services:
   web:
@@ -380,7 +379,7 @@ CMD ["python", "app.py"]
 
 **Результат команды `docker compose ps`**
 
-
+![Команда docker compose ps](images_lab_05/ps.png)
 
 **Описание:**
 
@@ -391,6 +390,7 @@ CMD ["python", "app.py"]
 
 **Работа приложения в браузере**
 
+![Интерфес](images_lab_05/innovation.png)
 
 
 **Описание:**
@@ -400,6 +400,18 @@ CMD ["python", "app.py"]
 - работающий счетчик посещений (значение увеличивается при каждом обновлении);
 - центрированное расположение контента;
 - увеличенный шрифт для отображения числа посещений.
+
+**Результат выполнения 1 задания:**
+
+![Зеленый фон](images_lab_05/innovation.png)
+
+**Результат выполнения 2 задания:**
+
+![Версия docker](images_lab_05/version.png)
+
+**Результат выполнения 3 задания:**
+
+![Пустая папка](images_lab_05/logs.png)
 
 ---
 
